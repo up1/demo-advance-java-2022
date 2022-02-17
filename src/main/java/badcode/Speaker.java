@@ -1,5 +1,6 @@
 package badcode;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Speaker {
@@ -74,5 +75,34 @@ public class Speaker {
 
     public void setCertifications(List<String> certifications) {
         this.certifications = certifications;
+    }
+
+    public void validate() {
+        if (isNullOrEmpty(getFirstName())) {
+            throw new ArgumentNullException("First name is required.");
+        }
+        if (isNullOrEmpty(getLastName())) {
+            throw new ArgumentNullException("Last name is required.");
+        }
+        if (isNullOrEmpty(getEmail())) {
+            throw new ArgumentNullException("Email is required.");
+        }
+        String[] domains = {"gmail.com", "live.com"};
+        String emailDomain = getEmailDomain(getEmail()); // Avoid ArrayIndexOutOfBound
+        if (Arrays.stream(domains).filter(it -> it.equals(emailDomain)).count() != 1) {
+            throw new SpeakerDoesntMeetRequirementsException("Speaker doesn't meet our standard rules.");
+        }
+    }
+
+    public String getEmailDomain(String email) {
+        String[] inputs = email.trim().split("@");
+        if (inputs.length == 2) {
+            return inputs[1];
+        }
+        throw new DomainEmailInvalidException("Email domain invalid.");
+    }
+
+    private boolean isNullOrEmpty(String input) {
+        return input == null || input.trim().equals("");
     }
 }
