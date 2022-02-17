@@ -58,7 +58,7 @@ public class RegisterBusiness {
     public String getEmailDomain(String email) {
         String[] inputs = email.trim().split("@");
         if (inputs.length == 2) return inputs[1];
-        throw new DomainEmailInvalidException();
+        throw new DomainEmailInvalidException("Email domain invalid.");
     }
 
 }

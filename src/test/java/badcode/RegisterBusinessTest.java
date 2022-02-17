@@ -43,4 +43,31 @@ public class RegisterBusinessTest {
         });
         assertEquals("Last name is required.", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("")
+    public void case04() {
+        RegisterBusiness business = new RegisterBusiness();
+        Speaker speaker = new Speaker();
+        speaker.setFirstName("Somkiat");
+        speaker.setLastName("Pui");
+        Exception exception = assertThrows(ArgumentNullException.class, () -> {
+            business.register(null, speaker);
+        });
+        assertEquals("Email is required.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("")
+    public void case05() {
+        RegisterBusiness business = new RegisterBusiness();
+        Speaker speaker = new Speaker();
+        speaker.setFirstName("Somkiat");
+        speaker.setLastName("Pui");
+        speaker.setEmail("somkiat");
+        Exception exception = assertThrows(DomainEmailInvalidException.class, () -> {
+            business.register(null, speaker);
+        });
+        assertEquals("Email domain invalid.", exception.getMessage());
+    }
 }
