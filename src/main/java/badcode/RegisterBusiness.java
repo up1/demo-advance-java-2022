@@ -8,6 +8,10 @@ public class RegisterBusiness {
         Integer speakerId;
         String[] domains = {"gmail.com", "live.com"};
 
+        if(speaker == null) {
+            throw new RuntimeException("Speaker is null");
+        }
+
         if (speaker.getFirstName() != null && !speaker.getFirstName().trim().equals("")) {
             if (speaker.getLastName() != null && !speaker.getLastName().trim().equals("")) {
                 if (speaker.getEmail() != null && !speaker.getEmail().trim().equals("")) {
