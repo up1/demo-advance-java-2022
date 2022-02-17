@@ -70,4 +70,32 @@ public class RegisterBusinessTest {
         });
         assertEquals("Email domain invalid.", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("")
+    public void case06() {
+        RegisterBusiness business = new RegisterBusiness();
+        Speaker speaker = new Speaker();
+        speaker.setFirstName("Somkiat");
+        speaker.setLastName("Pui");
+        speaker.setEmail("somkiat@xyz.com");
+        Exception exception = assertThrows(SpeakerDoesntMeetRequirementsException.class, () -> {
+            business.register(null, speaker);
+        });
+        assertEquals("Speaker doesn't meet our standard rules.", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("")
+    public void case07() {
+        RegisterBusiness business = new RegisterBusiness();
+        Speaker speaker = new Speaker();
+        speaker.setFirstName("Somkiat");
+        speaker.setLastName("Pui");
+        speaker.setEmail("somkiat@gmail.com");
+        Exception exception = assertThrows(SaveSpeakerException.class, () -> {
+            business.register(null, speaker);
+        });
+        assertEquals("Can't save a speaker.", exception.getMessage());
+    }
 }
