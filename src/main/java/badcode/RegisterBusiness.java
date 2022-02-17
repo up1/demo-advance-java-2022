@@ -14,6 +14,7 @@ public class RegisterBusiness {
         try {
             speakerId = repository.saveSpeaker(speaker);
         } catch (Exception exception) {
+            exception.printStackTrace();
             throw new SaveSpeakerException("Can't save a speaker.");
         }
 
