@@ -19,6 +19,40 @@ public class DemoOcp {
     }
 }
 
+class Main {
+    public static void main(String[] args) {
+        ProcessTemplate process1 = new Process1();
+        process1.excute(); // Template method
+    }
+}
+
+
+abstract class ProcessTemplate {
+    abstract void step1();
+    abstract void step2();
+    abstract void step3();
+    public void excute() {
+        step1();
+        step2();
+        step3();
+    }
+}
+
+class Process1 extends ProcessTemplate {
+    @Override
+    void step1() {
+    }
+
+    @Override
+    void step2() {
+    }
+
+    @Override
+    void step3() {
+    }
+}
+
+
 abstract class ValidationRule<T> {
     abstract boolean validate(T input);
 }
