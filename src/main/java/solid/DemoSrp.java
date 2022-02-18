@@ -8,10 +8,10 @@ public class DemoSrp {
                 System.out.println("Not real, for testing");
             }
         };
-        // Depednency Injection
+        // Dependency Injection
         // 1. Constructor Injection
         OrderBusiness orderBusiness = new OrderBusiness(paymentService);
-        // 2. Setter Injection
+        // 2. Setter/Field Injection
 //        orderBusiness.setPaymentService(paymentService);
         // 3. Method Injection
 //        orderBusiness.process(paymentService);
