@@ -16,10 +16,9 @@ class DemoServiceTest {
     }
 }
 
-// Override by method
-class DBX extends  DB {
+class DBX implements DB {
     @Override
-    int increaseOne(int id) {
+    public int increaseOne(int id) {
         return 2;
     }
 }
