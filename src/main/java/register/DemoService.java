@@ -14,9 +14,15 @@ public class DemoService {
      * @param id
      * @return
      */
-    public String compute(int id) {
+    public String compute(int id, ModelA a) {
+        db.increaseOne(id);
         return "Result = " + db.increaseOne(id);
+//        return "";
     }
+
+}
+
+class ModelA {
 
 }
 
